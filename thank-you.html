@@ -55,7 +55,8 @@
         .form-section input[type="text"],
         .form-section input[type="number"],
         .form-section textarea,
-        .form-section select {
+        .form-section select,
+        .form-section input[type="email"] { /* Adicionado input[type="email"] */
             width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 15px;
@@ -119,6 +120,9 @@
         <div id="plano-magico-form" class="form-section hidden">
             <h2>Plano Mágico Financeiro: Seus Dados para a IA</h2>
             <form id="form-financeiro">
+                <label for="userEmailFinanceiro">Seu Melhor E-mail (para receber o plano):</label>
+                <input type="email" id="userEmailFinanceiro" name="userEmail" placeholder="seu.email@exemplo.com" required>
+
                 <label for="rendaMensal">Sua Renda Mensal Atual (aprox.):</label>
                 <input type="number" id="rendaMensal" name="rendaMensal" placeholder="Ex: 3000" required>
 
@@ -149,6 +153,9 @@
         <div id="ads-ai-form" class="form-section hidden">
             <h2>Crie Anúncios com IA: Seus Dados para a IA</h2>
             <form id="form-ads-ai">
+                <label for="userEmailAdsAi">Seu Melhor E-mail (para receber os anúncios):</label>
+                <input type="email" id="userEmailAdsAi" name="userEmail" placeholder="seu.email@exemplo.com" required>
+
                 <label for="nomeNegocio">Nome do seu Negócio/Serviço:</label>
                 <input type="text" id="nomeNegocio" name="nomeNegocio" placeholder="Ex: Consultoria Financeira, Loja de Artesanato" required>
 
@@ -187,6 +194,8 @@
     </div>
 
     <script>
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzugEpy5uVMeu5Nb9ORd_gCcIK-D7UKg1gM6h-Rm740ZV9EcXZx077ZwsmAHZGqLg3A/exec';
+
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const productType = urlParams.get('product'); // Pega o parâmetro 'product' da URL
@@ -234,24 +243,58 @@
             }
 
             // Lidar com o envio dos formulários (será enviado para o Google Apps Script)
-            document.getElementById('form-financeiro')?.addEventListener('submit', function(event) {
+            document.getElementById('form-financeiro')?.addEventListener('submit', async function(event) {
                 event.preventDefault();
                 const formData = new FormData(this);
                 const data = Object.fromEntries(formData.entries());
-                console.log("Dados do formulário Financeiro:", data);
-                alert("Seu plano está sendo gerado! Você o receberá por e-mail em breve.");
-                // Aqui você enviaria os dados para o Google Apps Script
-                // Ex: fetch('SUA_URL_APPS_SCRIPT_PARA_FINANCEIRO', { method: 'POST', body: JSON.stringify(data) });
+                
+                // Adiciona o tipo de produto aos dados
+                data.productType = 'plano-magico';
+
+                try {
+                    const response = await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Necessário para evitar erros CORS com Apps Script
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+                    // Como mode: 'no-cors', a resposta será opaca. Não podemos ler o corpo.
+                    // Apenas verificamos se a requisição foi enviada.
+                    alert("Seu plano está sendo gerado! Você o receberá por e-mail em breve. Verifique sua caixa de entrada e spam.");
+                    this.reset(); // Limpa o formulário
+                } catch (error) {
+                    console.error('Erro ao enviar dados para o Apps Script:', error);
+                    alert("Ocorreu um erro ao gerar seu plano. Por favor, tente novamente mais tarde.");
+                }
             });
 
-            document.getElementById('form-ads-ai')?.addEventListener('submit', function(event) {
+            document.getElementById('form-ads-ai')?.addEventListener('submit', async function(event) {
                 event.preventDefault();
                 const formData = new FormData(this);
                 const data = Object.fromEntries(formData.entries());
-                console.log("Dados do formulário Anúncios IA:", data);
-                alert("Seus anúncios estão sendo gerados! Você os receberá por e-mail em breve.");
-                // Aqui você enviaria os dados para o Google Apps Script
-                // Ex: fetch('SUA_URL_APPS_SCRIPT_PARA_ADS_AI', { method: 'POST', body: JSON.stringify(data) });
+
+                // Adiciona o tipo de produto aos dados
+                data.productType = 'ads-ai';
+
+                try {
+                    const response = await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Necessário para evitar erros CORS com Apps Script
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+                    // Como mode: 'no-cors', a resposta será opaca. Não podemos ler o corpo.
+                    // Apenas verificamos se a requisição foi enviada.
+                    alert("Seus anúncios estão sendo gerados! Você os receberá por e-mail em breve. Verifique sua caixa de entrada e spam.");
+                    this.reset(); // Limpa o formulário
+                } catch (error) {
+                    console.error('Erro ao enviar dados para o Apps Script:', error);
+                    alert("Ocorreu um erro ao gerar seus anúncios. Por favor, tente novamente mais tarde.");
+                }
             });
         });
     </script>
