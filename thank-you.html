@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado pela sua Compra!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            max-width: 800px; 
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #007bff;
+            font-size: 2.5em; 
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em; 
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .form-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+        .form-section label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-section input[type="text"],
+        .form-section input[type="number"],
+        .form-section textarea,
+        .form-section select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .form-section textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-section button {
+            background: #28a745;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .form-section button:hover {
+            background: #218838;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .form-section input,
+            .form-section textarea,
+            .form-section select,
+            .form-section button {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Obrigado pela sua Compra!</h1>
+        <p>Sua jornada para o sucesso financeiro ou para anúncios incríveis está prestes a começar.</p>
+        <p>Para que a Inteligência Artificial possa gerar seu conteúdo personalizado, por favor, preencha o formulário abaixo com as informações solicitadas.</p>
+
+        <div id="plano-magico-form" class="form-section hidden">
+            <h2>Plano Mágico Financeiro: Seus Dados para a IA</h2>
+            <form id="form-financeiro">
+                <label for="rendaMensal">Sua Renda Mensal Atual (aprox.):</label>
+                <input type="number" id="rendaMensal" name="rendaMensal" placeholder="Ex: 3000" required>
+
+                <label for="despesasFixas">Total de Despesas Fixas Mensais (aprox.):</label>
+                <input type="number" id="despesasFixas" name="despesasFixas" placeholder="Ex: 1500" required>
+
+                <label for="valorDividas">Valor Total das Dívidas (aprox.):</label>
+                <input type="number" id="valorDividas" name="valorDividas" placeholder="Ex: 5000" required>
+
+                <label for="objetivoFinanceiro">Seu Principal Objetivo Financeiro:</label>
+                <select id="objetivoFinanceiro" name="objetivoFinanceiro" required>
+                    <option value="">Selecione...</option>
+                    <option value="sair_dividas">Sair das Dívidas</option>
+                    <option value="economizar">Economizar para um objetivo (viagem, casa, etc.)</option>
+                    <option value="investir">Começar a Investir</option>
+                    <option value="organizar">Organizar minhas finanças</option>
+                    <option value="outro">Outro (especifique abaixo)</option>
+                </select>
+                <input type="text" id="outroObjetivo" name="outroObjetivo" placeholder="Selecione 'Outro' e especifique aqui" class="hidden">
+
+                <label for="maiorDesafio">Qual seu Maior Desafio Financeiro hoje?</label>
+                <textarea id="maiorDesafio" name="maiorDesafio" placeholder="Ex: Gasto demais com delivery, não consigo poupar, não entendo de investimentos..." required></textarea>
+
+                <button type="submit">Gerar Meu Plano Personalizado</button>
+            </form>
+        </div>
+
+        <div id="ads-ai-form" class="form-section hidden">
+            <h2>Crie Anúncios com IA: Seus Dados para a IA</h2>
+            <form id="form-ads-ai">
+                <label for="nomeNegocio">Nome do seu Negócio/Serviço:</label>
+                <input type="text" id="nomeNegocio" name="nomeNegocio" placeholder="Ex: Consultoria Financeira, Loja de Artesanato" required>
+
+                <label for="publicoAlvo">Público-Alvo do seu Anúncio:</label>
+                <input type="text" id="publicoAlvo" name="publicoAlvo" placeholder="Ex: Mulheres 30-45 anos, empreendedoras, interessadas em moda" required>
+
+                <label for="objetivoAnuncio">Objetivo Principal do Anúncio:</label>
+                <select id="objetivoAnuncio" name="objetivoAnuncio" required>
+                    <option value="">Selecione...</option>
+                    <option value="gerar_leads">Gerar Leads (contatos)</option>
+                    <option value="vendas">Gerar Vendas Diretas</option>
+                    <option value="reconhecimento">Aumentar Reconhecimento de Marca</option>
+                    <option value="trafego">Levar Tráfego para o Site/WhatsApp</option>
+                    <option value="outro">Outro (especifique abaixo)</option>
+                </select>
+                <input type="text" id="outroObjetivoAnuncio" name="outroObjetivoAnuncio" placeholder="Selecione 'Outro' e especifique aqui" class="hidden">
+
+                <label for="pontosVenda">Principais Pontos de Venda do seu Produto/Serviço:</label>
+                <textarea id="pontosVenda" name="pontosVenda" placeholder="Ex: Preço acessível, entrega rápida, produto artesanal, atendimento personalizado..." required></textarea>
+
+                <label for="tomAnuncio">Tom Desejado para o Anúncio:</label>
+                <select id="tomAnuncio" name="tomAnuncio" required>
+                    <option value="">Selecione...</option>
+                    <option value="profissional">Profissional e Formal</option>
+                    <option value="divertido">Divertido e Descontraído</option>
+                    <option value="urgente">Urgente e Direto</option>
+                    <option value="inspirador">Inspirador e Motivacional</option>
+                    <option value="outro">Outro (especifique abaixo)</option>
+                </select>
+                <input type="text" id="outroTomAnuncio" name="outroTomAnuncio" placeholder="Selecione 'Outro' e especifique aqui" class="hidden">
+
+                <button type="submit">Gerar Meus Anúncios Personalizados</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productType = urlParams.get('product'); // Pega o parâmetro 'product' da URL
+
+            if (productType === 'plano-magico') {
+                document.getElementById('plano-magico-form').classList.remove('hidden');
+                // Listener para o campo 'Outro Objetivo Financeiro'
+                document.getElementById('objetivoFinanceiro').addEventListener('change', function() {
+                    const outroObjetivoInput = document.getElementById('outroObjetivo');
+                    if (this.value === 'outro') {
+                        outroObjetivoInput.classList.remove('hidden');
+                        outroObjetivoInput.setAttribute('required', 'true');
+                    } else {
+                        outroObjetivoInput.classList.add('hidden');
+                        outroObjetivoInput.removeAttribute('required');
+                    }
+                });
+            } else if (productType === 'ads-ai') {
+                document.getElementById('ads-ai-form').classList.remove('hidden');
+                // Listener para o campo 'Outro Objetivo Anúncio'
+                document.getElementById('objetivoAnuncio').addEventListener('change', function() {
+                    const outroObjetivoAnuncioInput = document.getElementById('outroObjetivoAnuncio');
+                    if (this.value === 'outro') {
+                        outroObjetivoAnuncioInput.classList.remove('hidden');
+                        outroObjetivoAnuncioInput.setAttribute('required', 'true');
+                    } else {
+                        outroObjetivoAnuncioInput.classList.add('hidden');
+                        outroObjetivoAnuncioInput.removeAttribute('required');
+                    }
+                });
+                // Listener para o campo 'Outro Tom Anúncio'
+                document.getElementById('tomAnuncio').addEventListener('change', function() {
+                    const outroTomAnuncioInput = document.getElementById('outroTomAnuncio');
+                    if (this.value === 'outro') {
+                        outroTomAnuncioInput.classList.remove('hidden');
+                        outroTomAnuncioInput.setAttribute('required', 'true');
+                    } else {
+                        outroTomAnuncioInput.classList.add('hidden');
+                        outroTomAnuncioInput.removeAttribute('required');
+                    }
+                });
+            } else {
+                // Caso nenhum produto seja especificado ou seja inválido
+                document.querySelector('.container').innerHTML = "<h1>Erro: Produto não especificado ou inválido.</h1><p>Por favor, retorne à página inicial.</p>";
+            }
+
+            // Lidar com o envio dos formulários (será enviado para o Google Apps Script)
+            document.getElementById('form-financeiro')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+                console.log("Dados do formulário Financeiro:", data);
+                alert("Seu plano está sendo gerado! Você o receberá por e-mail em breve.");
+                // Aqui você enviaria os dados para o Google Apps Script
+                // Ex: fetch('SUA_URL_APPS_SCRIPT_PARA_FINANCEIRO', { method: 'POST', body: JSON.stringify(data) });
+            });
+
+            document.getElementById('form-ads-ai')?.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+                console.log("Dados do formulário Anúncios IA:", data);
+                alert("Seus anúncios estão sendo gerados! Você os receberá por e-mail em breve.");
+                // Aqui você enviaria os dados para o Google Apps Script
+                // Ex: fetch('SUA_URL_APPS_SCRIPT_PARA_ADS_AI', { method: 'POST', body: JSON.stringify(data) });
+            });
+        });
+    </script>
+</body>
+</html>
