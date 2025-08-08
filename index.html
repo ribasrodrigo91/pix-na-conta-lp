@@ -162,6 +162,51 @@
             <input type="email" id="userEmail" placeholder="seu.email@exemplo.com" required>
             <button onclick="proceedToPayment('plano-magico')">Comprar Agora (R$9,90)</button>
         </div>
+
+        <div class="post-payment-section">
+            <p><strong>Já realizou o pagamento?</strong> Clique no botão abaixo para personalizar seu plano e recebê-lo por e-mail!</p>
+            <a href="thank-you.html?product=plano-magico" class="personalize-button">Já Paguei! Quero Personalizar Meu Plano</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Adicione um estilo para o novo botão
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .post-payment-section {
+                margin-top: 30px;
+                padding: 20px;
+                background: #e0f2f7; /* Um tom de azul claro para contraste */
+                border-radius: 8px;
+                border: 1px solid #b3e5fc;
+            }
+            .post-payment-section p {
+                font-size: 1.1em;
+                color: #01579b;
+                margin-bottom: 15px;
+            }
+            .personalize-button {
+                display: inline-block;
+                background: #007bff; /* Azul para o botão de personalização */
+                color: #fff;
+                padding: 12px 25px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1.1em;
+                font-weight: bold;
+                text-decoration: none;
+                transition: background 0.3s ease;
+            }
+            .personalize-button:hover {
+                background: #0056b3;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
     </div>
 
     <script>
@@ -176,7 +221,7 @@
                 let mercadoPagoLink = "";
                 if (productType === 'plano-magico') {
                     // Placeholder para o link do Mercado Pago do Plano Mágico Financeiro
-                    mercadoPagoLink = "https://mpago.la/17KCcYj"; 
+                    mercadoPagoLink = "https://mpago.la/2aSyPrs"; 
                 } else if (productType === 'ads-ai') {
                     // Placeholder para o link do Mercado Pago do Crie Anúncios com IA
                     mercadoPagoLink = "https://www.mercadopago.com.br/link-ads-ai";

@@ -164,6 +164,51 @@
             <input type="email" id="userEmail" placeholder="seu.email@exemplo.com" required>
             <button onclick="proceedToPayment('ads-ai')">Comprar Agora (R$9,90)</button>
         </div>
+
+        <div class="post-payment-section">
+            <p><strong>Já realizou o pagamento?</strong> Clique no botão abaixo para personalizar seus anúncios e recebê-los por e-mail!</p>
+            <a href="thank-you.html?product=ads-ai" class="personalize-button">Já Paguei! Quero Personalizar Meus Anúncios</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Adicione um estilo para o novo botão
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .post-payment-section {
+                margin-top: 30px;
+                padding: 20px;
+                background: #424242; /* Um tom de cinza escuro para contraste */
+                border-radius: 8px;
+                border: 1px solid #616161;
+            }
+            .post-payment-section p {
+                font-size: 1.1em;
+                color: #e0e0e0;
+                margin-bottom: 15px;
+            }
+            .personalize-button {
+                display: inline-block;
+                background: #ef5350; /* Vermelho para o botão de personalização */
+                color: #fff;
+                padding: 12px 25px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1.1em;
+                font-weight: bold;
+                text-decoration: none;
+                transition: background 0.3s ease;
+            }
+            .personalize-button:hover {
+                background: #d32f2f;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
     </div>
 
     <script>
@@ -181,7 +226,7 @@
                     mercadoPagoLink = "https://www.mercadopago.com.br/link-plano-magico"; 
                 } else if (productType === 'ads-ai') {
                     // Placeholder para o link do Mercado Pago do Crie Anúncios com IA
-                    mercadoPagoLink = "https://mpago.la/143pY3p";
+                    mercadoPagoLink = "https://mpago.la/1i1hEad";
                 }
                 
                 window.location.href = mercadoPagoLink;
